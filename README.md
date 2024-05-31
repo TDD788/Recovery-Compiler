@@ -1,4 +1,10 @@
 ## Automated recovery compilation based on Github Action
+## Advertisement
+In case you want to use the post anointing on telegam you must add these following secrets with their proper content this within the repository configurations  
+
+**TELEGRAM_TO**: Here you add the ID of the channel recipient of the message
+
+**TELEGRAM_TOKEN**: Here you define the bot token (not ID but token, you can create a bot with [@BotFather](https://t.me/botfather) )
 
 ## Notice
 
