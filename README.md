@@ -64,14 +64,14 @@ owner = your Github username
 
 ```
 pkg install openssh
-ssh-keygen -t ed25519 -C "git@github.com:owner/Action-Recovery-Builder.git"
+ssh-keygen -t darkcompiler -C "git@github.com:owner/Recovery-Compiler.git"
 ```
 
 #### 7. Add the keys to your repo. In Termux, use the following commands:
 
 ```
 cd /data/data/com.termux/files/usr/etc/ssh
-cat ssh_host_ed25519_key.pub
+cat ssh_host_darkcompiler_key.pub
 ```
 
   Select and copy the key then paste in the box for Key.
@@ -80,7 +80,7 @@ cat ssh_host_ed25519_key.pub
 #### 8. Now to add your private ssh key. Back in Termux:
 
 ```
-cat ssh_host_ed25519_key
+cat ssh_host_darkcompiler_key
 ```
 
    Copy the output from Termux.
