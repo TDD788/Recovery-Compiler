@@ -13,6 +13,7 @@ on:
         description: 'Recovery Type'
         required: true
         type: choice
+        default: 'TWRP'
         options:
           - 'OFRP'
           - 'SHRP'
@@ -22,7 +23,8 @@ on:
         description: 'Manifest Branch'
         required: true
         type: choice
-        options:
+        default: 
+        options: '12.1'
           - '12.1'
           - '11.0'
       DEVICE_TREE:
@@ -41,10 +43,11 @@ on:
         description: "Set partition to build"
         required: true
         type: choice
+        default: 'recovery'
         options:
-          - 'vendorboot'
-          - 'boot'
           - 'recovery'
+          - 'boot'
+          - 'vendorboot'
       RELEASE_TYPE:
         description: 'Normal Released Build'
         required: true
