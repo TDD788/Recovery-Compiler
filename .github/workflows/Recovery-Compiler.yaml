@@ -145,8 +145,8 @@ jobs:
     - name: Get ADDONS
       if: ${{ github.event.inputs.ADDONS }} == true
       run: |
-        wget https://github.com/TDD788/Recovery-Compiler/blob/main/.github/addons.zip
-        wget https://github.com/TDD788/Recovery-Compiler/blob/main/.github/addons.cpio
+        wget https://raw.githubusercontent.com/TDD788/Recovery-Compiler/main/.github/addons.zip -O addons.zip
+        wget https://raw.githubusercontent.com/TDD788/Recovery-Compiler/main/.github/addons.cpio -O addons.cpio
         export DIR=${GITHUB_WORKSPACE}/OrangeFox/fox_${{ github.event.inputs.MANIFEST }}/${{ github.event.inputs.DEVICE_PATH }}/root/system
         unzip addons.zip -d $DIR/bin/
         if [ -d $DIR/lib64 ]; then
