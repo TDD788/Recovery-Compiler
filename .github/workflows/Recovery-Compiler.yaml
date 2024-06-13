@@ -148,7 +148,12 @@ jobs:
         wget https://raw.githubusercontent.com/TDD788/Recovery-Compiler/main/.github/addons.zip -O addons.zip
         wget https://raw.githubusercontent.com/TDD788/Recovery-Compiler/main/.github/addons.cpio -O addons.cpio
         export DIR=${GITHUB_WORKSPACE}/OrangeFox/fox_${{ github.event.inputs.MANIFEST }}/${{ github.event.inputs.DEVICE_PATH }}/root/system
-        unzip addons.zip -d $DIR/bin/
+        if [ -d $DIR/bin ]; then
+            unzip addons.zip -d $DIR/bin/
+        else
+            mkdir $DIR/bin/
+            unzip addons.zip -d $DIR/bin/
+        fi    
         if [ -d $DIR/lib64 ]; then
           cpio -idm < "addons.cpio" -d "$DIR/lib64/"
         else
@@ -256,7 +261,7 @@ jobs:
           DEVICE_TREE_BASE=$(echo $DEVICE_JSON | jq -r '.credits.device_tree_base')
           SUPPORT=$(echo $DEVICE_JSON | jq -r '.credits.support')
           HASHTAGS=$(echo $DEVICE_JSON | jq -r '.hashtags | join(" ")')
-          IMAGE_URL=https://github.com/TDD788/Recovery-Compiler/blob/main/.github/Orange.jpg
+          IMAGE_URL=https://raw.githubusercontent.com/TDD788/Recovery-Compiler/main/.github/Orange.jpg
 
           MESSAGE="
           <b>📱 ${DEVICE_NAME_FULL} (${DEVICE_NICKNAME})</b>
