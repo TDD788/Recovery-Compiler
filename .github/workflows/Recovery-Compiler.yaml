@@ -144,7 +144,7 @@ jobs:
         
     - name: Get ADDONS
       if: ${{ github.event.inputs.ADDONS }} == true
-      run: \
+      run: |
         wget https://github.com/TDD788/Recovery-Compiler/blob/main/.github/addons.zip
         wget https://github.com/TDD788/Recovery-Compiler/blob/main/.github/addons.cpio
         export DIR=${GITHUB_WORKSPACE}/OrangeFox/fox_${{ github.event.inputs.MANIFEST }}/${{ github.event.inputs.DEVICE_PATH }}/root/system
@@ -325,7 +325,7 @@ jobs:
       
     - name: Get ADDONS
       if: ${{ github.event.inputs.ADDONS }} == true
-      run: \
+      run: |
         wget https://github.com/TDD788/Recovery-Compiler/blob/main/.github/addons.zip
         wget https://github.com/TDD788/Recovery-Compiler/blob/main/.github/addons.cpio
         export DIR=${GITHUB_WORKSPACE}/OrangeFox/fox_${{ github.event.inputs.MANIFEST }}/${{ github.event.inputs.DEVICE_PATH }}/root/system
@@ -481,7 +481,7 @@ jobs:
 
     - name: Get ADDONS
       if: ${{ github.event.inputs.ADDONS }} == true
-      run: \
+      run: |
         wget https://github.com/TDD788/Recovery-Compiler/blob/main/.github/addons.zip
         wget https://github.com/TDD788/Recovery-Compiler/blob/main/.github/addons.cpio
         export DIR=${GITHUB_WORKSPACE}/OrangeFox/fox_${{ github.event.inputs.MANIFEST }}/${{ github.event.inputs.DEVICE_PATH }}/root/system
@@ -639,7 +639,7 @@ jobs:
 
     - name: Get ADDONS
       if: ${{ github.event.inputs.ADDONS }} == true
-      run: \
+      run: |
         wget https://github.com/TDD788/Recovery-Compiler/blob/main/.github/addons.zip
         wget https://github.com/TDD788/Recovery-Compiler/blob/main/.github/addons.cpio
         export DIR=${GITHUB_WORKSPACE}/OrangeFox/fox_${{ github.event.inputs.MANIFEST }}/${{ github.event.inputs.DEVICE_PATH }}/root/system
