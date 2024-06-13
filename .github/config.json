@@ -1,0 +1,32 @@
+{
+  "devices": {
+    "a12s": {
+      "name": "Samsung Galaxy A12 Nacho",
+      "nickname": "Samsung A12s",
+      "notes": "Compatible with Android 11 to 13",
+      "known_bugs": "At the moment none but any news send me the PM",
+      "working": [
+        "Nano Editor",
+        "Flashlight",
+        "LZ4 Decompress",
+        "SGDISK",
+        "GSI-rw",
+        "Orange Fox Zip",
+        "Magisk Delta Installer"
+      ],
+      "credits": {
+        "creator": "@TheDarkDeath788",
+        "device_tree_base": "TWRPDTGEN",
+        "support": "Orange Fox"
+      },
+      "hashtags": [
+        "#6_months_of_development",
+        "#Nacho",
+        "#recovery",
+        "#A13",
+        "#OrangeFox",
+        "#unofficial"
+      ]
+    }
+  }
+}
