@@ -243,7 +243,8 @@ jobs:
         run: |
           TELEGRAM_CHAT_ID="$TELEGRAM_TO"
           TELEGRAM_TOKEN="$TELEGRAM_TOKEN"
-          
+
+          wget https://github.com/${{ github.repository }}/blob/main/.github/config.json
           DEVICE_JSON=$(jq -r ".devices.${DEVICE_NAME}" config.json)
           
           DEVICE_NAME_FULL=$(echo $DEVICE_JSON | jq -r '.name')
@@ -255,7 +256,7 @@ jobs:
           DEVICE_TREE_BASE=$(echo $DEVICE_JSON | jq -r '.credits.device_tree_base')
           SUPPORT=$(echo $DEVICE_JSON | jq -r '.credits.support')
           HASHTAGS=$(echo $DEVICE_JSON | jq -r '.hashtags | join(" ")')
-          IMAGE_URL=$(echo $DEVICE_JSON | jq -r '.image_url')
+          IMAGE_URL=https://github.com/TDD788/Recovery-Compiler/blob/main/.github/Orange.jpg
 
           MESSAGE="
           <b>📱 ${DEVICE_NAME_FULL} (${DEVICE_NICKNAME})</b>
