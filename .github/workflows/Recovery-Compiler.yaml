@@ -226,8 +226,8 @@ jobs:
           * ${{ env.MD5_TAR }} for ODIN TAR file.
 
     - name: Upload to Telegram
-        if: ${{ github.event.inputs.RELEASE_TYPE == 'true' && github.event.inputs.POST_TO_TELEGRAM == 'true' }}
-        env:
+      if: ${{ github.event.inputs.RELEASE_TYPE == 'true' && github.event.inputs.POST_TO_TELEGRAM == 'true' }}
+      env:
           TELEGRAM_TO: ${{ secrets.TELEGRAM_TO }}
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TW_MANIFEST: ${{ github.event.inputs.MANIFEST }}
@@ -240,7 +240,7 @@ jobs:
           MD5_RRAMDISK: ${{ env.MD5_RRAMDISK }}
           GITHUB_ACTOR: ${{ github.actor }}
           GITHUB_RUN_ID: ${{ github.run_id }}
-        run: |
+      run: |
           TELEGRAM_CHAT_ID="$TELEGRAM_TO"
           TELEGRAM_TOKEN="$TELEGRAM_TOKEN"
 
