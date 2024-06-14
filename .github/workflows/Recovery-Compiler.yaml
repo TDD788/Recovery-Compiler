@@ -144,7 +144,7 @@ jobs:
         echo "COMMIT_ID=$(git rev-parse HEAD)" >> $GITHUB_ENV
         
     - name: Get ADDONS
-      if: ${{ github.event.inputs.ADDONS == true }}
+      if: ${{ github.event.inputs.ADDONS == 'true' }}
       run: |
         wget https://raw.githubusercontent.com/TDD788/Recovery-Compiler/main/.github/addons.zip
         wget https://raw.githubusercontent.com/TDD788/Recovery-Compiler/main/.github/addons.cpio
@@ -152,8 +152,8 @@ jobs:
         if [ -d $DIR/bin ]; then
             unzip addons.zip -d $DIR/bin/
         else
-            mkdir $DIR/bin/
-            unzip addons.zip -d $DIR/bin/
+        mkdir $DIR/bin/
+        unzip addons.zip -d $DIR/bin/
         fi    
         if [ -d $DIR/lib64 ]; then
           cpio -idm < "addons.cpio" -d "$DIR/lib64/"
