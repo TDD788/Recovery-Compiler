@@ -115,6 +115,7 @@ jobs:
        sudo apt install lzma
        sudo apt install git aria2 -y
        sudo apt install nodejs
+       sudo apt install jq
        git clone https://gitlab.com/OrangeFox/misc/scripts
        cd scripts
        sudo bash setup/android_build_env.sh
@@ -170,7 +171,6 @@ jobs:
         export BOARD_RAMDISK_USE_LZMA=true
         set -e
         lunch twrp_${{ github.event.inputs.DEVICE_NAME }}-eng && make clean && mka adbd ${{ inputs.BUILD_TARGET }}image -j$(nproc --all)
-      continue-on-error: true
     
     - name: Upload files
       if: ${{ github.event.inputs.RELEASE_TYPE == 'false' }}
@@ -249,7 +249,7 @@ jobs:
           TELEGRAM_CHAT_ID="$TELEGRAM_TO"
           TELEGRAM_TOKEN="$TELEGRAM_TOKEN"
 
-          wget https://github.com/${{ github.repository }}/blob/main/.github/config.json
+          wget https://raw.githubusercontent.com/${{ github.repository }}/main/.github/config.json
           DEVICE_JSON=$(jq -r ".devices.${DEVICE_NAME}" config.json)
           
           DEVICE_NAME_FULL=$(echo $DEVICE_JSON | jq -r '.name')
