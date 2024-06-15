@@ -58,9 +58,6 @@ on:
         required: true
         default: false
         type: boolean
-      ADDONS:
-        description: 'Add ADDONS (GSIRW/MULTIDISABLER/LZ4)'
-        type: boolean
        
 jobs:
   Build-OrangeFox:
@@ -142,25 +139,6 @@ jobs:
         git clone ${{ github.event.inputs.DEVICE_TREE }} -b ${{ github.event.inputs.DEVICE_TREE_BRANCH }} ./${{ github.event.inputs.DEVICE_PATH }}
         cd ${{ github.event.inputs.DEVICE_PATH }}
         echo "COMMIT_ID=$(git rev-parse HEAD)" >> $GITHUB_ENV
-        
-    - name: Get ADDONS
-      if: ${{ github.event.inputs.ADDONS }} == true
-      run: |
-        wget https://raw.githubusercontent.com/TDD788/Recovery-Compiler/main/.github/addons.zip
-        wget https://raw.githubusercontent.com/TDD788/Recovery-Compiler/main/.github/addons.cpio
-        export DIR=${GITHUB_WORKSPACE}/OrangeFox/fox_${{ github.event.inputs.MANIFEST }}/${{ github.event.inputs.DEVICE_PATH }}/root/system
-        if [ -d $DIR/bin ]; then
-            unzip addons.zip -d $DIR/bin/
-        else
-        mkdir $DIR/bin/
-        unzip addons.zip -d $DIR/bin/
-        fi    
-        if [ -d $DIR/lib64 ]; then
-          cpio -idm < "addons.cpio" -d "$DIR/lib64/"
-        else
-          mkdir $DIR/lib64
-          cpio -idm < "addons.cpio" -d "$DIR/lib64/"
-        fi
       
     - name: Building OrangeFox
       run: |
@@ -364,21 +342,7 @@ jobs:
       run: |
         git clone ${{ github.event.inputs.DEVICE_TREE }} -b ${{ github.event.inputs.DEVICE_TREE_BRANCH }} ./${{ github.event.inputs.DEVICE_PATH }}
       working-directory: ${{ steps.pwd.outputs.workspace-folder }}
-      
-    - name: Get ADDONS
-      if: ${{ github.event.inputs.ADDONS }} == true
-      run: |
-        wget https://github.com/TDD788/Recovery-Compiler/blob/main/.github/addons.zip
-        wget https://github.com/TDD788/Recovery-Compiler/blob/main/.github/addons.cpio
-        export DIR=${GITHUB_WORKSPACE}/OrangeFox/fox_${{ github.event.inputs.MANIFEST }}/${{ github.event.inputs.DEVICE_PATH }}/root/system
-        unzip addons.zip -d $DIR/bin/
-        if [ -d $DIR/lib64 ]; then
-          cpio -idm < "addons.cpio" -d "$DIR/lib64/"
-        else
-          mkdir $DIR/lib64
-          cpio -idm < "addons.cpio" -d "$DIR/lib64/"
-        fi
-        
+
     - name: Set Swap Space
       uses: pierotofy/set-swap-space@master
       with:
@@ -521,20 +485,6 @@ jobs:
         git clone ${{ github.event.inputs.DEVICE_TREE }} -b ${{ github.event.inputs.DEVICE_TREE_BRANCH }} ./${{ github.event.inputs.DEVICE_PATH }}
       working-directory: ${{ steps.pwd.outputs.workspace-folder }}
 
-    - name: Get ADDONS
-      if: ${{ github.event.inputs.ADDONS }} == true
-      run: |
-        wget https://github.com/TDD788/Recovery-Compiler/blob/main/.github/addons.zip
-        wget https://github.com/TDD788/Recovery-Compiler/blob/main/.github/addons.cpio
-        export DIR=${GITHUB_WORKSPACE}/OrangeFox/fox_${{ github.event.inputs.MANIFEST }}/${{ github.event.inputs.DEVICE_PATH }}/root/system
-        unzip addons.zip -d $DIR/bin/
-        if [ -d $DIR/lib64 ]; then
-          cpio -idm < "addons.cpio" -d "$DIR/lib64/"
-        else
-          mkdir $DIR/lib64
-          cpio -idm < "addons.cpio" -d "$DIR/lib64/"
-        fi
-   
     - name: Set Swap Space
       uses: pierotofy/set-swap-space@master
       with:
@@ -678,20 +628,6 @@ jobs:
       run: |
         git clone ${{ github.event.inputs.DEVICE_TREE }} -b ${{ github.event.inputs.DEVICE_TREE_BRANCH }} ./${{ github.event.inputs.DEVICE_PATH }}
       working-directory: ${{ steps.pwd.outputs.workspace-folder }}
-
-    - name: Get ADDONS
-      if: ${{ github.event.inputs.ADDONS }} == true
-      run: |
-        wget https://github.com/TDD788/Recovery-Compiler/blob/main/.github/addons.zip
-        wget https://github.com/TDD788/Recovery-Compiler/blob/main/.github/addons.cpio
-        export DIR=${GITHUB_WORKSPACE}/OrangeFox/fox_${{ github.event.inputs.MANIFEST }}/${{ github.event.inputs.DEVICE_PATH }}/root/system
-        unzip addons.zip -d $DIR/bin/
-        if [ -d $DIR/lib64 ]; then
-          cpio -idm < "addons.cpio" -d "$DIR/lib64/"
-        else
-          mkdir $DIR/lib64
-          cpio -idm < "addons.cpio" -d "$DIR/lib64/"
-        fi
 
     - name: Set Swap Space
       uses: pierotofy/set-swap-space@master
