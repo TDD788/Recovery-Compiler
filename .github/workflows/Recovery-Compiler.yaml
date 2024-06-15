@@ -144,7 +144,7 @@ jobs:
         echo "COMMIT_ID=$(git rev-parse HEAD)" >> $GITHUB_ENV
         
     - name: Get ADDONS
-      if: ${{ github.event.inputs.ADDONS == 'true' }}
+      if: ${{ github.event.inputs.ADDONS }} == true
       run: |
         wget https://raw.githubusercontent.com/TDD788/Recovery-Compiler/main/.github/addons.zip
         wget https://raw.githubusercontent.com/TDD788/Recovery-Compiler/main/.github/addons.cpio
